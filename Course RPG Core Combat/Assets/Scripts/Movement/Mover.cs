@@ -1,44 +1,48 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
+using RPG.Combat;
 
-public class Mover : MonoBehaviour
+namespace RPG.Movement
 {
-    [SerializeField] NavMeshAgent _playerNavMeshAgent = null;
-
-    void Update()
+    public class Mover : MonoBehaviour
     {
-        if (Input.GetMouseButton(0))
+        NavMeshAgent _playerNavMeshAgent;
+        Animator _playerAnimator;
+
+        private void Start()
         {
-            MoveToCursor();
+            _playerNavMeshAgent = GetComponent<NavMeshAgent>();
+            _playerAnimator = GetComponent<Animator>();
         }
 
-        UpdateAnimator();
-    }
-
-    private void MoveToCursor()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        bool hasHit = Physics.Raycast(ray, out hit);
-        
-        if(hasHit)
+        private void Update()
         {
-            _playerNavMeshAgent.destination = hit.point;
+            UpdateAnimator();
         }
-    }
 
-    private void UpdateAnimator()
-    {
-        Vector3 velocity = GetComponent<NavMeshAgent>().velocity;
-        Vector3 localVelocity = transform.InverseTransformDirection(velocity);
-        float speed = localVelocity.z;
-        GetComponent<Animator>().SetFloat("Forward Speed", speed);
+        public void StartMoveAction(Vector3 destination)
+        {
+            GetComponent<Fighter>().Cancel();
+            MoveTo(destination);
+        }
 
-        Debug.Log(velocity + " / " + localVelocity);
+        public void MoveTo(Vector3 destination)
+        {
+            _playerNavMeshAgent.destination = destination;
+            _playerNavMeshAgent.isStopped = false;
+        }
+
+        public void Stop()
+        {
+            _playerNavMeshAgent.isStopped = true;
+        }
+
+        private void UpdateAnimator()
+        {
+            Vector3 velocity = _playerNavMeshAgent.velocity;
+            Vector3 localVelocity = transform.InverseTransformDirection(velocity);
+            float speed = localVelocity.z;
+            _playerAnimator.SetFloat("Forward Speed", speed);
+        }
     }
 }
-
-// Ray lastRay;
-// Debug.DrawRay(lastRay.origin, lastRay.direction * 100);
