@@ -6,13 +6,6 @@ namespace RPG.Control
 {
     public class PlayerController : MonoBehaviour
     {
-        Mover _moverScript;
-
-        private void Start()
-        {
-            _moverScript = GetComponent<Mover>();
-        }
-
         private void Update()
         {
             if (InteractWithCombat()) return;
@@ -46,7 +39,7 @@ namespace RPG.Control
             {
                 if (Input.GetMouseButton(0))
                 {
-                    _moverScript.StartMoveAction(hit.point);
+                    GetComponent<Mover>().StartMoveAction(hit.point);
                 }
                 return true;
             }

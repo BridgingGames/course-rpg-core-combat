@@ -1,41 +1,62 @@
 ﻿using UnityEngine;
 using RPG.Movement;
+using RPG.Core;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour
+    public class Fighter : MonoBehaviour, IAction
     {
+        // Variables.
         [SerializeField] float _weaponRange = 2f;
-
-        public Transform _target;
+        private Transform _target;
 
         private void Update()
         {
-            if (_target != null) return;
-            if (!IsInRange())
-            {
-                GetComponent<Mover>().MoveTo(_target.position);
-            }
+            /* Moving to Target Section;
+             * If the target is null, returns;
+             * If IsInRange() returns false, move player to the target position;
+             * If IsInRange() returns true, stop the player. */
+            if (_target == null) return;
+            if (!IsInRange()) GetComponent<Mover>().MoveTo(_target.position);
             else
             {
-                GetComponent<Mover>().Stop();
+                GetComponent<Mover>().Cancel();
+                AttackBehaviour();
             }
         }
 
+        private void AttackBehaviour()
+        {
+            GetComponent<Animator>().SetTrigger("attack");
+        }
+
+        /* Method that calculate if the distance between the player and the target is smaller than the weapon range;
+         * Returns a boolean. */
         private bool IsInRange()
         {
             return Vector3.Distance(transform.position, _target.position) < _weaponRange;
         }
 
+        /* Method that receives a CombatTarget and start the combat;
+         * Start the combat action by the ActionScheduler;
+         * Current target becomes the target received. */
         public void Attack(CombatTarget combatTarget)
         {
+            GetComponent<ActionScheduler>().StartAction(this);
             _target = combatTarget.transform;
-            print("Where's the money Lebowski?");
         }
 
+        /* Method that cancels the attack action;
+         * Nullify the current target. */
         public void Cancel()
         {
             _target = null;
+        }
+
+        // Animation Event.
+        void Hit()
+        {
+
         }
     }
 }
