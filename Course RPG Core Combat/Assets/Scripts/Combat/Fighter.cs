@@ -8,7 +8,9 @@ namespace RPG.Combat
     {
         // Variables.
         [SerializeField] float _weaponRange = 2f;
+        [SerializeField] float _timeBetweenAttacks = 1f;
         private Transform _target;
+        float _timeSinceLastAttack = 0;
 
         private void Update()
         {
@@ -23,11 +25,17 @@ namespace RPG.Combat
                 GetComponent<Mover>().Cancel();
                 AttackBehaviour();
             }
+
+            _timeSinceLastAttack += Time.deltaTime;
         }
 
         private void AttackBehaviour()
         {
-            GetComponent<Animator>().SetTrigger("attack");
+            if (_timeSinceLastAttack >= _timeBetweenAttacks)
+            {
+                GetComponent<Animator>().SetTrigger("attack");
+                _timeSinceLastAttack = 0;
+            }
         }
 
         /* Method that calculate if the distance between the player and the target is smaller than the weapon range;
@@ -56,7 +64,7 @@ namespace RPG.Combat
         // Animation Event.
         void Hit()
         {
-
+            _target.GetComponent<Health>().TakeDamage(Random.Range(1, 9) + 10);
         }
     }
 }
