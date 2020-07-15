@@ -28,26 +28,39 @@ namespace RPG.Combat
             _timeSinceLastAttack += Time.deltaTime;
         }
 
+        public bool CanAttack(CombatTarget combatTarget)
+        {
+            if (combatTarget == null) return false;
+            Health targetToTest = combatTarget.GetComponent<Health>();
+            return targetToTest != null && !targetToTest.IsDead();
+        }
+
         private void AttackBehaviour()
         {
+            transform.LookAt(_target.transform);
+
             if (_timeSinceLastAttack >= _timeBetweenAttacks)
             {
-                // This wioll trigger the Hit() event.
-                GetComponent<Animator>().SetTrigger("attack");
+                // This will trigger the Hit() event.
+                TriggerAttack();
                 _timeSinceLastAttack = 0;
             }
+        }
+
+        private void TriggerAttack()
+        {
+            GetComponent<Animator>().ResetTrigger("stopAttack");
+            GetComponent<Animator>().SetTrigger("attack");
         }
 
         // Animation Event.
         void Hit()
         {
-            if (_target != null)
-            {
-                _target.TakeDamage(_weaponDamage);
+            if (_target == null) return;
+            _target.TakeDamage(_weaponDamage);
 
-                // Additional Content
-                GetComponent<PopUpsController>().DamagePopUp(_weaponDamage, _target.transform);
-            }
+            // Additional Content
+            GetComponent<PopUpsController>().PlayerDamagePopUp(_weaponDamage, _target.transform);
         }
 
         void FootR()
@@ -73,8 +86,14 @@ namespace RPG.Combat
 
         public void Cancel()
         {
-            GetComponent<Animator>().SetTrigger("stopAttack");
+            StopAttack();
             _target = null;
+        }
+
+        private void StopAttack()
+        {
+            GetComponent<Animator>().ResetTrigger("attack");
+            GetComponent<Animator>().SetTrigger("stopAttack");
         }
     }
 }

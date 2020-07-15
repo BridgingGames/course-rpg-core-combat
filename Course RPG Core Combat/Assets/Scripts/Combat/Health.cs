@@ -27,16 +27,7 @@ namespace RPG.Combat
         {
             if (_isDead) return;
             _isDead = true;
-
             GetComponent<Animator>().SetTrigger("die");
-            if (GetComponent<NavMeshAgent>() != null)
-            {
-                GetComponent<NavMeshAgent>().enabled = false;
-            }
-            if (GetComponent<CapsuleCollider>() != null)
-            {
-                GetComponent<CapsuleCollider>().enabled = false;
-            }
         }
     }
 }
