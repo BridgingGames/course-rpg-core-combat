@@ -126,6 +126,33 @@ Transform:
   m_Father: {fileID: 2423329939616069517}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1570507724397466009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627272900472832250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faacc4ffc2183f94fa63ae414a6b83d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4015649935170424437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627272900472832250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3848c5130de44b243ab24ffd2a720477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvas: {fileID: 0}
+  _playerDamagePopUpText: {fileID: 3860946976731177050, guid: a9676185ce435cb49baed06fc7639a97,
+    type: 3}
 --- !u!1 &871749868744861822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1031,32 +1058,6 @@ Transform:
   m_Father: {fileID: 2484878406556510528}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1570507724397466009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 627272900472832250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faacc4ffc2183f94fa63ae414a6b83d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4015649935170424437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 627272900472832250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3848c5130de44b243ab24ffd2a720477, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _canvas: {fileID: 0}
-  _damagePopUpText: {fileID: 0}
 --- !u!1 &6083166778519740145
 GameObject:
   m_ObjectHideFlags: 0
@@ -1851,6 +1852,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -266025290020563059, guid: 9c561adf9456a20449e6b1bea989c040,
+        type: 3}
+      propertyPath: _healthPoints
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 3227802582574555910, guid: 9c561adf9456a20449e6b1bea989c040,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1919,7 +1925,7 @@ PrefabInstance:
     - target: {fileID: 4774262412611990229, guid: 9c561adf9456a20449e6b1bea989c040,
         type: 3}
       propertyPath: _weaponDamage
-      value: 9999
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5816083053073576105, guid: 9c561adf9456a20449e6b1bea989c040,
         type: 3}
