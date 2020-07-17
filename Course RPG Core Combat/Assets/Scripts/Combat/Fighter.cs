@@ -2,7 +2,6 @@
 using RPG.Movement;
 using RPG.Core;
 using RPG.UI;
-using System;
 
 namespace RPG.Combat
 {
@@ -24,7 +23,10 @@ namespace RPG.Combat
             if (_target == null) return;
             if (_target.IsDead()) return;
 
-            if (!IsInRange()) GetComponent<Mover>().MoveTo(_target.transform.position);
+            if (!IsInRange())
+            {
+                GetComponent<Mover>().MoveTo(_target.transform.position);
+            }
             else
             {
                 GetComponent<Mover>().Cancel();

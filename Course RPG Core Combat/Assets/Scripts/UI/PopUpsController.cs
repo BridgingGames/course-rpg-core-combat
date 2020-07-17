@@ -5,7 +5,7 @@ namespace RPG.UI
 {
     public class PopUpsController : MonoBehaviour
     {
-        [SerializeField] Canvas _canvas = null;
+        private Canvas _canvas;
         [SerializeField] Transform _playerDamagePopUpText = null;
 
         public void DamagePopUp(float damage, Transform target)
