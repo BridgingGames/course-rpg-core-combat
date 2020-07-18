@@ -12,6 +12,8 @@ namespace RPG.Control
         [SerializeField] private float suspicionTime = 3f;
         [SerializeField] PatrolPath patrolPath;
         [SerializeField] float waypointTolerance = 1f;
+        [SerializeField] float waypointDwellTime = 2f;
+        [Range(0, 1)][SerializeField] float patrolSpeedFraction = 0.2751f;
 
         private Health health;
         private Fighter fighter;
@@ -20,6 +22,7 @@ namespace RPG.Control
 
         private Vector3 guardPosition;
         private float timeSinceLastSawPlayer = Mathf.Infinity;
+        private float timeSinceArrivedAtWaypoint = Mathf.Infinity;
 
         int currentWaypointIndex = 0;
 
@@ -39,7 +42,6 @@ namespace RPG.Control
 
             if (InAttackRange(player) && GetComponent<Fighter>().CanAttack(player))
             {
-                timeSinceLastSawPlayer = 0;
                 AttackBehaviour();
             }
             else if (timeSinceLastSawPlayer < suspicionTime)
@@ -51,7 +53,13 @@ namespace RPG.Control
                 PatrolBehaviour();
             }
 
+            UpdateTimers();
+        }
+
+        private void UpdateTimers()
+        {
             timeSinceLastSawPlayer += Time.deltaTime;
+            timeSinceArrivedAtWaypoint += Time.deltaTime;
         }
 
         private void PatrolBehaviour()
@@ -66,8 +74,10 @@ namespace RPG.Control
                 }
                 nextPosition = GetCurrentWaypoint();
             }
-
-            mover.StartMoveAction(nextPosition);
+            if (timeSinceArrivedAtWaypoint > waypointDwellTime)
+            { 
+                mover.StartMoveAction(nextPosition, patrolSpeedFraction);
+            }
         }
 
         private bool AtWayPoint()
@@ -78,6 +88,7 @@ namespace RPG.Control
 
         private void CycleWaypoint()
         {
+            timeSinceArrivedAtWaypoint = 0;
             currentWaypointIndex = patrolPath.GetNextIndex(currentWaypointIndex);
         }
 
@@ -93,6 +104,7 @@ namespace RPG.Control
 
         private void AttackBehaviour()
         {
+            timeSinceLastSawPlayer = 0;
             GetComponent<Fighter>().Attack(player);
         }
 

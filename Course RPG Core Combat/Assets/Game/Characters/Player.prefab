@@ -150,7 +150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3848c5130de44b243ab24ffd2a720477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canvas: {fileID: 0}
   _playerDamagePopUpText: {fileID: 3860946976731177050, guid: a9676185ce435cb49baed06fc7639a97,
     type: 3}
 --- !u!1 &871749868744861822

@@ -7,6 +7,7 @@ namespace RPG.Control
 {
     public class PlayerController : MonoBehaviour
     {
+
         private Health _health = null;
 
         private void Start()
@@ -36,7 +37,7 @@ namespace RPG.Control
                 {
                     continue;
                 }
-                if(Input.GetMouseButtonDown(0))
+                if(Input.GetMouseButton(0))
                 {
                     GetComponent<Fighter>().Attack(target.gameObject);
                 }
@@ -47,16 +48,17 @@ namespace RPG.Control
 
         private bool InteractWithMovement()
         {
-            RaycastHit hit;
-            bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
-
-            if (hasHit)
+            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+            foreach (var hit in hits)
             {
-                if (Input.GetMouseButton(0))
+                if(hit.transform.tag == "Walkable")
                 {
-                    GetComponent<Mover>().StartMoveAction(hit.point);
+                    if (Input.GetMouseButton(0))
+                    {
+                        GetComponent<Mover>().StartMoveAction(hit.point, 1f);
+                    }
+                    return true;
                 }
-                return true;
             }
             return false;
         }

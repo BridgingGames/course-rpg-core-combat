@@ -25,7 +25,7 @@ namespace RPG.Combat
 
             if (!IsInRange())
             {
-                GetComponent<Mover>().MoveTo(_target.transform.position);
+                GetComponent<Mover>().MoveTo(_target.transform.position, 1f);
             }
             else
             {
@@ -40,7 +40,7 @@ namespace RPG.Combat
         {
             if (combatTarget == null) return false;
             Health targetToTest = combatTarget.GetComponent<Health>();
-            return targetToTest != null && !targetToTest.IsDead();
+            return targetToTest != null && !targetToTest.IsDead() && /* Additional */ !targetToTest.GetComponent<Status>().CheckIfHidden();
         }
 
         public void Attack(GameObject combatTarget)
