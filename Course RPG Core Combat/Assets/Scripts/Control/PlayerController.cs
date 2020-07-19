@@ -49,15 +49,18 @@ namespace RPG.Control
         private bool InteractWithMovement()
         {
             RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
-            foreach (var hit in hits)
+            if (hits != null)
             {
-                if(hit.transform.tag == "Walkable")
+                foreach (var hit in hits)
                 {
-                    if (Input.GetMouseButton(0))
+                    if (hit.transform.tag == "Walkable")
                     {
-                        GetComponent<Mover>().StartMoveAction(hit.point, 1f);
+                        if (Input.GetMouseButton(0))
+                        {
+                            GetComponent<Mover>().StartMoveAction(hit.point, 1f);
+                        }
+                        return true;
                     }
-                    return true;
                 }
             }
             return false;
