@@ -131,21 +131,21 @@ namespace RPG.Combat
 
             /* Additional */
             GetComponent<PopUpsController>().DamagePopUp(_weaponDamage, _target.transform);
-            GetComponent<SoundEffects>().PlayUnarmedHitSoundEffect();
+            GetComponent<SoundController>().PlayUnarmedHitSoundEffect();
         }
 
         // Animation Event.
         void FootR()
         {
             /* Additional */
-            GetComponent<SoundEffects>().PlayStepSoundEffect();
+            GetComponent<SoundController>().PlayStepSoundEffect();
         }
 
         // Animation Event.
         void FootL()
         {
             /* Additional */
-            GetComponent<SoundEffects>().PlayStepSoundEffect();
+            GetComponent<SoundController>().PlayStepSoundEffect();
         }
     }
 }

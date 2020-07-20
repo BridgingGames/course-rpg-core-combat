@@ -166,11 +166,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c8180a2ce1b3dd4191b8738df707af5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chaseDistance: 7
+  _chaseDistance: 6
   suspicionTime: 3
   patrolPath: {fileID: 0}
   waypointTolerance: 1
-  waypointDwellTime: 3
+  waypointDwellTime: 2
   patrolSpeedFraction: 0.2751
 --- !u!114 &3328859806869208987
 MonoBehaviour:
@@ -1553,8 +1553,8 @@ GameObject:
   - component: {fileID: 7856948270671931760}
   - component: {fileID: 7167430446337307967}
   m_Layer: 0
-  m_Name: Sounds Holder
-  m_TagString: Untagged
+  m_Name: SFX Holder
+  m_TagString: SFX Holder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1585,7 +1585,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1594,7 +1594,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 100
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -2004,7 +2004,7 @@ PrefabInstance:
     - target: {fileID: -266025290020563059, guid: 9c561adf9456a20449e6b1bea989c040,
         type: 3}
       propertyPath: _healthPoints
-      value: 36
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1080652041, guid: 9c561adf9456a20449e6b1bea989c040, type: 3}
       propertyPath: m_Speed
@@ -2068,7 +2068,7 @@ PrefabInstance:
     - target: {fileID: 4774262412611990229, guid: 9c561adf9456a20449e6b1bea989c040,
         type: 3}
       propertyPath: _weaponDamage
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4774262412611990229, guid: 9c561adf9456a20449e6b1bea989c040,
         type: 3}

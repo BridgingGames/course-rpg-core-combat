@@ -29,7 +29,7 @@ namespace RPG.Core
         {
             if (_isDead) return;
             _isDead = true;
-            GetComponent<SoundEffects>().PlayDeathSoundEffect();
+            GetComponent<SoundController>().PlayDeathSoundEffect();
             GetComponent<Animator>().SetTrigger("die");
             GetComponent<ActionScheduler>().CancelCurrentAction();
         }
