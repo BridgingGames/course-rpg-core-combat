@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 5055043648369462091}
   - component: {fileID: -3222179139967948533}
   - component: {fileID: 9094516631692162440}
+  - component: {fileID: 8131002852312216475}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -162,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e989a61bf7c0079438460e0d31e12933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponRange: 1
+  _weaponRange: 1.5
   _timeBetweenAttacks: 1
   _weaponDamage: 1
 --- !u!114 &-266025290020563059
@@ -216,3 +217,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 5.662
+--- !u!114 &8131002852312216475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6530175992961168347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f461ea515836ddc45b896b9ba9090bcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stepGrass: {fileID: 8300000, guid: d2da2149e007d7e4198c8764c731ef4c, type: 3}
+  hitUnarmed:
+  - {fileID: 8300000, guid: 5a97f8be826600348bf996bb9051fbdf, type: 3}
+  - {fileID: 8300000, guid: 4802f44f49dc8344fa70d32e93e3551a, type: 3}
+  - {fileID: 8300000, guid: fcd9e43b96b769442a05e199f3139b95, type: 3}
+  - {fileID: 8300000, guid: 66a50ef9bcfda6f468abc95080fedde1, type: 3}
+  - {fileID: 8300000, guid: 4136ad309b55f024c8c8c776f9b5b593, type: 3}
+  hiding: {fileID: 8300000, guid: 6400889d8df525541837edaafe8772d0, type: 3}
+  healing: {fileID: 8300000, guid: 4dd9fdcbc0f537e4c8e7440c69309140, type: 3}
+  revive: {fileID: 8300000, guid: 8c0a00cdf9fad294d8f1c74396d30eff, type: 3}
+  death: {fileID: 8300000, guid: 604a53f11c6e54544b626b1c0cfc4684, type: 3}

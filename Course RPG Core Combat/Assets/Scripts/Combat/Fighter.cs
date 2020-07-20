@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using RPG.Movement;
 using RPG.Core;
+
+/* Additional */
 using RPG.UI;
+using RPG.Sounds;
 
 namespace RPG.Combat
 {
@@ -10,8 +13,11 @@ namespace RPG.Combat
         [SerializeField] float _weaponRange = 1f;
         [SerializeField] float _timeBetweenAttacks = 1f;
         [SerializeField] int _weaponDamage = 1;
-        private Health _target;
+        public Health _target;
         private float _timeSinceLastAttack = 0;
+
+        /* Additional */
+        [SerializeField] private bool isInCombat = false;
 
         private void Start()
         {
@@ -68,8 +74,15 @@ namespace RPG.Combat
 
         public void Cancel()
         {
+            /* Additional */
+            if (GetComponent<Health>().IsDead())
+            {
+                GetComponent<Fighter>().CombatEnd();
+            }
+
             StopAttack();
             _target = null;
+            GetComponent<Mover>().Cancel();
         }
 
         private void StopAttack()
@@ -84,26 +97,55 @@ namespace RPG.Combat
             return Vector3.Distance(transform.position, _target.transform.position) < _weaponRange;
         }
 
+        /* Additional */
+        public bool IsInCombat()
+        {
+            return isInCombat;
+        }
+
+        /* Additional */
+        public void CombatStart()
+        {
+            isInCombat = true;
+            if (_target != null && !_target.GetComponent<Fighter>().IsInCombat())
+            {
+                _target.GetComponent<Fighter>().CombatStart();
+            }
+        }
+
+        /* Additional */
+        public void CombatEnd()
+        {
+            isInCombat = false;
+            if (_target != null && _target.GetComponent<Fighter>().IsInCombat())
+            {
+                _target.GetComponent<Fighter>().CombatEnd();
+            }
+        }
+
         // Animation Event.
         void Hit()
         {
             if (_target == null) return;
             _target.TakeDamage(_weaponDamage);
 
-            // Additional Content
+            /* Additional */
             GetComponent<PopUpsController>().DamagePopUp(_weaponDamage, _target.transform);
+            GetComponent<SoundEffects>().PlayUnarmedHitSoundEffect();
         }
 
         // Animation Event.
         void FootR()
         {
-            return;
+            /* Additional */
+            GetComponent<SoundEffects>().PlayStepSoundEffect();
         }
 
         // Animation Event.
         void FootL()
         {
-            return;
+            /* Additional */
+            GetComponent<SoundEffects>().PlayStepSoundEffect();
         }
     }
 }

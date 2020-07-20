@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/* Additional */
+using RPG.Sounds;
+
 namespace RPG.Core
 {
     public class Health : MonoBehaviour
@@ -26,6 +29,7 @@ namespace RPG.Core
         {
             if (_isDead) return;
             _isDead = true;
+            GetComponent<SoundEffects>().PlayDeathSoundEffect();
             GetComponent<Animator>().SetTrigger("die");
             GetComponent<ActionScheduler>().CancelCurrentAction();
         }

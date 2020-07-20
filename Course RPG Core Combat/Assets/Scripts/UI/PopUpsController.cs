@@ -1,4 +1,4 @@
-﻿// Additional Content
+﻿/* Additional */
 using UnityEngine;
 
 namespace RPG.UI

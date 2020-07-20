@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3602631707456474108}
   - component: {fileID: 3602631707457928916}
   - component: {fileID: 450835000548408538}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Grass Hide Spot
   m_TagString: Hide Spot
   m_Icon: {fileID: 0}

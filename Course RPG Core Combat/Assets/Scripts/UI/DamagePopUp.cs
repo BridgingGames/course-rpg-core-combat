@@ -1,4 +1,4 @@
-﻿// Additional Content
+﻿/* Additional */
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,7 +22,7 @@ namespace RPG.UI
             if(_target != null)
             {
                 Vector2 screenPosition = Camera.main.WorldToScreenPoint(_target.position);
-                transform.position = new Vector3(screenPosition.x, screenPosition.y, 0);
+                transform.position = new Vector3(screenPosition.x -16f, screenPosition.y+50, 0);
             }
         }
 

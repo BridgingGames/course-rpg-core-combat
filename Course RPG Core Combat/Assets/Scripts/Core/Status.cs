@@ -1,5 +1,7 @@
 ﻿/* Additional */
 using UnityEngine;
+using RPG.Sounds;
+using RPG.Combat;
 
 namespace RPG.Core
 {
@@ -9,9 +11,10 @@ namespace RPG.Core
 
         private void OnTriggerEnter(Collider col)
         {
-            if (col.tag == "Hide Spot")
+            if (col.tag == "Hide Spot" && !GetComponent<Fighter>().IsInCombat())
             {
                 isHidden = true;
+                GetComponent<SoundEffects>().PlayHidingSoundEffect();
             }
         }
 
