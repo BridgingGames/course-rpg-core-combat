@@ -8,7 +8,7 @@ namespace RPG.Core
     public class Status : MonoBehaviour
     {
         [SerializeField] bool isHidden = false;
-        [SerializeField] Material playerMaterial;
+        [SerializeField] Material playerMaterial = null;
 
         private void OnTriggerEnter(Collider col)
         {

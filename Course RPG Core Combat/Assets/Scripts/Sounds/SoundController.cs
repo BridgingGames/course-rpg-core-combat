@@ -6,19 +6,19 @@ namespace RPG.Sounds
     public class SoundController : MonoBehaviour
     {
         [Header("Background Music")]
-        [Tooltip("Main Level music.")] [SerializeField] private AudioClip _mainMusic;
+        [Tooltip("Main Level music.")] [SerializeField] private AudioClip _mainMusic = null;
         [Space]
 
         [Header("Sound Effects")]
-        [SerializeField] private AudioClip stepGrass;
+        [SerializeField] private AudioClip stepGrass = null;
         [Tooltip("All unarmed hit sound effects.")] [SerializeField] private AudioClip[] hitUnarmed = new AudioClip[5];
-        [SerializeField] private AudioClip hiding;
-        [SerializeField] private AudioClip healing;
-        [SerializeField] private AudioClip revive;
-        [SerializeField] private AudioClip death;
+        [SerializeField] private AudioClip hiding = null;
+        [SerializeField] private AudioClip healing = null;
+        [SerializeField] private AudioClip revive = null;
+        [SerializeField] private AudioClip death = null;
 
-        private AudioSource _sfxAudioSource;
-        private AudioSource _bgmAudioSource;
+        private AudioSource _sfxAudioSource = null;
+        private AudioSource _bgmAudioSource = null;
 
         void Start()
         {
