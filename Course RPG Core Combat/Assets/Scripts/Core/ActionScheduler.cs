@@ -4,20 +4,18 @@ namespace RPG.Core
 {
     public class ActionScheduler : MonoBehaviour
     {
-        // Global Variables.
-        private IAction _currentAction;
+        private IAction currentAction;
 
-        // This method controls which action is taking place at the moment;
-        // Receveives an IAction (interface) and check if It's already playing;
-        // If it's a new IAction, call the current's Cancel() method and save the new one.
-        public void StartAction(IAction a)
+        // Receive an IAction and check If It's already being used;
+        // If It's a new IAction, call Cancel() on the current one and set It as the new one.
+        public void StartAction(IAction action)
         {
-            if (_currentAction == a) return;
-            if (_currentAction != null) _currentAction.Cancel();
-            _currentAction = a;
+            if (currentAction == action) return;
+            if (currentAction != null) currentAction.Cancel();
+            currentAction = action;
         }
 
-        // This method calls the StartAction() method with a null value, canceling any current action;
+        // Calls StartAction() with a null value, canceling any current action.
         public void CancelCurrentAction()
         {
             StartAction(null);

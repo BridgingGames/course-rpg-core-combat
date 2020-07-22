@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RPG.Sounds
 {
-    public class SoundController : MonoBehaviour
+    public class NEEDREVISIONSoundController: MonoBehaviour
     {
         [Header("Background Music")]
         [Tooltip("Main Level music.")] [SerializeField] private AudioClip _mainMusic = null;

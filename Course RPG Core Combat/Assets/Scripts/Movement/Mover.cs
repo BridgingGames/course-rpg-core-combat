@@ -6,47 +6,55 @@ namespace RPG.Movement
 {
     public class Mover : MonoBehaviour, IAction
     {
-        [SerializeField] float maxSpeed = 5.662f;
-
-        private NavMeshAgent _playerNavMeshAgent;
-        private Health _health;
+        [SerializeField] private float maxSpeed;
+        private NavMeshAgent navMeshAgent;
+        private Health health;
 
         private void Start()
         {
-            _playerNavMeshAgent = GetComponent<NavMeshAgent>();
-            _health = GetComponent<Health>();
+            // Set default values.
+            maxSpeed = 5.662f;
+            navMeshAgent = GetComponent<NavMeshAgent>();
+            health = GetComponent<Health>();
         }
 
         private void Update()
         {
-            _playerNavMeshAgent.enabled = !_health.IsDead();
+            // Character has a NavMeshAgent as long as It's not dead;
+            // Also, update animations.
+            navMeshAgent.enabled = !health.IsDead();
             UpdateAnimator();
         }
 
+        // Get navmesh global velocity, transform into local velocity and apply into the animator.
+        private void UpdateAnimator()
+        {
+            Vector3 velocity = navMeshAgent.velocity;
+            Vector3 localVelocity = transform.InverseTransformDirection(velocity);
+            float speed = localVelocity.z;
+            GetComponent<Animator>().SetFloat("forwardSpeed", speed);
+        }
+
+        // Receive a destination and a speed fraction, start the move action and move the character.
         public void StartMoveAction(Vector3 destination, float speedFraction)
         {
             GetComponent<ActionScheduler>().StartAction(this);
             MoveTo(destination, speedFraction);
         }
 
+        // Receive a destination and a speed, applies It to navmesh and move the character.
         public void MoveTo(Vector3 destination, float speedFraction)
         {
-            _playerNavMeshAgent.destination = destination;
-            _playerNavMeshAgent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
-            _playerNavMeshAgent.isStopped = false;
+            navMeshAgent.destination = destination;
+            navMeshAgent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
+            navMeshAgent.isStopped = false;
         }
 
+        // IAction Method.
+        // Stop the character.
         public void Cancel()
         {
-            _playerNavMeshAgent.isStopped = true;
-        }
-
-        private void UpdateAnimator()
-        {
-            Vector3 velocity = _playerNavMeshAgent.velocity;
-            Vector3 localVelocity = transform.InverseTransformDirection(velocity);
-            float speed = localVelocity.z;
-            GetComponent<Animator>().SetFloat("forwardSpeed", speed);
+            navMeshAgent.isStopped = true;
         }
     }
 }

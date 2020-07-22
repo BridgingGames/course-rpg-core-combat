@@ -4,7 +4,6 @@ using RPG.Core;
 
 /* Additional */
 using RPG.UI;
-using RPG.Sounds;
 
 namespace RPG.Combat
 {
@@ -46,7 +45,7 @@ namespace RPG.Combat
         {
             if (combatTarget == null) return false;
             Health targetToTest = combatTarget.GetComponent<Health>();
-            return targetToTest != null && !targetToTest.IsDead() && /* Additional */ !targetToTest.GetComponent<Status>().CheckIfHidden();
+            return targetToTest != null && !targetToTest.IsDead();
         }
 
         public void Attack(GameObject combatTarget)
@@ -131,21 +130,18 @@ namespace RPG.Combat
 
             /* Additional */
             GetComponent<PopUpsController>().DamagePopUp(_weaponDamage, _target.transform);
-            GetComponent<SoundController>().PlayUnarmedHitSoundEffect();
         }
 
         // Animation Event.
         void FootR()
         {
-            /* Additional */
-            GetComponent<SoundController>().PlayStepSoundEffect();
+
         }
 
         // Animation Event.
         void FootL()
         {
-            /* Additional */
-            GetComponent<SoundController>().PlayStepSoundEffect();
+
         }
     }
 }

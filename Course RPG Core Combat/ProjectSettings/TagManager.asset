@@ -10,6 +10,7 @@ TagManager:
   - BGM Holder
   - SFX Holder
   - Portal
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX

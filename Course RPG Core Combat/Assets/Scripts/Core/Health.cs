@@ -1,35 +1,36 @@
 ﻿using UnityEngine;
 
-/* Additional */
-using RPG.Sounds;
-
 namespace RPG.Core
 {
     public class Health : MonoBehaviour
     {
-        [SerializeField] float _healthPoints = 100;
-        bool _isDead = false;
+        [SerializeField] private float healthPoints = 1f;
+        private bool isDead = false;
 
+        // Returns if the character is dead or not.
         public bool IsDead()
         {
-            return _isDead;
+            return isDead;
         }
 
+        // Receives damage and subtract It from the health points, also It can't go lower than 0;
+        // If health points equal 0, kills the character.
         public void TakeDamage(float damage)
         {
-            _healthPoints = Mathf.Max(_healthPoints - damage, 0);
+            healthPoints = Mathf.Max(healthPoints - damage, 0);
 
-            if (_healthPoints == 0)
+            if (healthPoints == 0)
             {
                 Die();
             }
         }
 
+        // If character is dead, don't kill It again, otherwise, flag It as dead;
+        // Also, trigger death animation, cancel any current action.
         private void Die()
         {
-            if (_isDead) return;
-            _isDead = true;
-            GetComponent<SoundController>().PlayDeathSoundEffect();
+            if (isDead) return;
+            isDead = true;
             GetComponent<Animator>().SetTrigger("die");
             GetComponent<ActionScheduler>().CancelCurrentAction();
         }
