@@ -6,9 +6,9 @@ namespace RPG.Core
     {
         static bool HasSpawned = false;
 
-        [SerializeField] GameObject persistentObjectPrefab;
+        [SerializeField] GameObject persistentObjectPrefab = null;
         
-        // Check if Persistent Object already exists, if not, spawn It and flag as already spawned.
+        // Check if Persistent Object already exists, if not, call spawn method and flag as already spawned.
         private void Awake()
         {
             if (HasSpawned) return;
