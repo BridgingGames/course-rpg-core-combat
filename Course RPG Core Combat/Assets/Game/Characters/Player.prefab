@@ -1922,6 +1922,11 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 1.3
       objectReference: {fileID: 0}
+    - target: {fileID: 6079179710553525190, guid: 9c561adf9456a20449e6b1bea989c040,
+        type: 3}
+      propertyPath: uniqueIdentifier
+      value: Player UUID
+      objectReference: {fileID: 0}
     - target: {fileID: 6530175992961168347, guid: 9c561adf9456a20449e6b1bea989c040,
         type: 3}
       propertyPath: m_Name
