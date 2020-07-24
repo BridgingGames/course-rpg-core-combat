@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 namespace RPG.Saving
 {
@@ -8,10 +9,14 @@ namespace RPG.Saving
 
         private SavingSystem savingSystem;
 
-        private void Start()
+        private void Awake()
         {
             savingSystem = GetComponent<SavingSystem>();
-            Load();
+        }
+
+        private IEnumerator Start()
+        {
+            yield return savingSystem.LoadLastScene(defaultSaveFile);
         }
 
         private void Update()
