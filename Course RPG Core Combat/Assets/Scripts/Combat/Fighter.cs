@@ -10,7 +10,8 @@ namespace RPG.Combat
     public class Fighter : MonoBehaviour, IAction
     {
         [SerializeField] float _timeBetweenAttacks = 1f;
-        [SerializeField] Transform handTransform = null;
+        [SerializeField] Transform rightHandTransform = null;
+        [SerializeField] Transform leftHandTransform = null;
         [SerializeField] Weapon defaultWeapon = null;
 
         public Health _target;
@@ -49,7 +50,7 @@ namespace RPG.Combat
         {
             currentWeapon = weapon;
             Animator animator = GetComponent<Animator>();
-            weapon.Spawn(handTransform, animator);
+            weapon.Spawn(rightHandTransform, leftHandTransform, animator);
         }
 
         public bool CanAttack(GameObject combatTarget)
@@ -110,7 +111,17 @@ namespace RPG.Combat
             /* Additional */
             GetComponent<PopUpsController>().DamagePopUp(currentWeapon.GetDamage(), _target.transform);
         }
-        
+
+        // Animation Event.
+        void Shoot()
+        {
+            if (_target == null) return;
+            _target.TakeDamage(currentWeapon.GetDamage());
+
+            /* Additional */
+            GetComponent<PopUpsController>().DamagePopUp(currentWeapon.GetDamage(), _target.transform);
+        }
+
         // Animation Event.
         void FootR()
         {

@@ -1936,6 +1936,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 37fe50dbafe3fb5469105c3a302dcb08,
         type: 2}
+    - target: {fileID: 4774262412611990229, guid: 9c561adf9456a20449e6b1bea989c040,
+        type: 3}
+      propertyPath: leftHandTransform
+      value: 
+      objectReference: {fileID: 2755860718654281347}
+    - target: {fileID: 4774262412611990229, guid: 9c561adf9456a20449e6b1bea989c040,
+        type: 3}
+      propertyPath: rightHandTransform
+      value: 
+      objectReference: {fileID: 8067121301946737758}
     - target: {fileID: 5055043648369462091, guid: 9c561adf9456a20449e6b1bea989c040,
         type: 3}
       propertyPath: playerMaterial
