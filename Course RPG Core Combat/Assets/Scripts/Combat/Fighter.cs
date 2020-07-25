@@ -9,18 +9,22 @@ namespace RPG.Combat
 {
     public class Fighter : MonoBehaviour, IAction
     {
-        [SerializeField] float _weaponRange = 1f;
         [SerializeField] float _timeBetweenAttacks = 1f;
-        [SerializeField] int _weaponDamage = 1;
-        public Health _target;
-        private float _timeSinceLastAttack = 0;
+        [SerializeField] Transform handTransform = null;
+        [SerializeField] Weapon defaultWeapon = null;
 
-        /* Additional */
-        [SerializeField] private bool isInCombat = false;
+        public Health _target;
+        private float _timeSinceLastAttack = Mathf.Infinity;
+        Weapon currentWeapon = null;
+
+        private void Awake()
+        {
+            EquipWeapon(defaultWeapon);
+        }
 
         private void Start()
         {
-            _timeSinceLastAttack = Mathf.Infinity;
+            
         }
 
         private void Update()
@@ -39,6 +43,13 @@ namespace RPG.Combat
             }
 
             _timeSinceLastAttack += Time.deltaTime;
+        }
+
+        public void EquipWeapon(Weapon weapon)
+        {
+            currentWeapon = weapon;
+            Animator animator = GetComponent<Animator>();
+            weapon.Spawn(handTransform, animator);
         }
 
         public bool CanAttack(GameObject combatTarget)
@@ -73,12 +84,6 @@ namespace RPG.Combat
 
         public void Cancel()
         {
-            /* Additional */
-            if (GetComponent<Health>().IsDead())
-            {
-                GetComponent<Fighter>().CombatEnd();
-            }
-
             StopAttack();
             _target = null;
             GetComponent<Mover>().Cancel();
@@ -93,45 +98,19 @@ namespace RPG.Combat
 
         private bool IsInRange()
         {
-            return Vector3.Distance(transform.position, _target.transform.position) < _weaponRange;
-        }
-
-        /* Additional */
-        public bool IsInCombat()
-        {
-            return isInCombat;
-        }
-
-        /* Additional */
-        public void CombatStart()
-        {
-            isInCombat = true;
-            if (_target != null && !_target.GetComponent<Fighter>().IsInCombat())
-            {
-                _target.GetComponent<Fighter>().CombatStart();
-            }
-        }
-
-        /* Additional */
-        public void CombatEnd()
-        {
-            isInCombat = false;
-            if (_target != null && _target.GetComponent<Fighter>().IsInCombat())
-            {
-                _target.GetComponent<Fighter>().CombatEnd();
-            }
+            return Vector3.Distance(transform.position, _target.transform.position) < currentWeapon.GetRange();
         }
 
         // Animation Event.
         void Hit()
         {
             if (_target == null) return;
-            _target.TakeDamage(_weaponDamage);
+            _target.TakeDamage(currentWeapon.GetDamage());
 
             /* Additional */
-            GetComponent<PopUpsController>().DamagePopUp(_weaponDamage, _target.transform);
+            GetComponent<PopUpsController>().DamagePopUp(currentWeapon.GetDamage(), _target.transform);
         }
-
+        
         // Animation Event.
         void FootR()
         {

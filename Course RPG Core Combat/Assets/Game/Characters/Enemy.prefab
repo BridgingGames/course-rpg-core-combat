@@ -1950,6 +1950,23 @@ PrefabInstance:
       propertyPath: _timeBetweenAttacks
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4774262412611990229, guid: 9c561adf9456a20449e6b1bea989c040,
+        type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 37fe50dbafe3fb5469105c3a302dcb08,
+        type: 2}
+    - target: {fileID: 4774262412611990229, guid: 9c561adf9456a20449e6b1bea989c040,
+        type: 3}
+      propertyPath: handTransform
+      value: 
+      objectReference: {fileID: 5057805556059477271}
+    - target: {fileID: 4774262412611990229, guid: 9c561adf9456a20449e6b1bea989c040,
+        type: 3}
+      propertyPath: defaultWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 37fe50dbafe3fb5469105c3a302dcb08,
+        type: 2}
     - target: {fileID: 6530175992961168347, guid: 9c561adf9456a20449e6b1bea989c040,
         type: 3}
       propertyPath: m_Name

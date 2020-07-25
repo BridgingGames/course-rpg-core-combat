@@ -98,14 +98,14 @@ namespace RPG.Control
 
         private void SuspicionBehaviour()
         {
-            /* Additional */ GetComponent<Fighter>().CombatEnd();
+            ///* Additional */ GetComponent<Fighter>().CombatEnd();
             GetComponent<ActionScheduler>().CancelCurrentAction();
         }
 
         private void AttackBehaviour()
         {
             timeSinceLastSawPlayer = 0;
-            /* Additional */ GetComponent<Fighter>().CombatStart();
+            ///* Additional */ GetComponent<Fighter>().CombatStart();
             GetComponent<Fighter>().Attack(player);
         }
 
