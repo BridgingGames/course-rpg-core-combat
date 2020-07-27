@@ -19,13 +19,13 @@ namespace RPG.Combat
         Weapon currentWeapon = null;
 
         private void Awake()
-        {
+        { 
             EquipWeapon(defaultWeapon);
         }
 
         private void Start()
         {
-            
+             
         }
 
         private void Update()
@@ -106,20 +106,24 @@ namespace RPG.Combat
         void Hit()
         {
             if (_target == null) return;
-            _target.TakeDamage(currentWeapon.GetDamage());
 
-            /* Additional */
-            GetComponent<PopUpsController>().DamagePopUp(currentWeapon.GetDamage(), _target.transform);
+            if (currentWeapon.HasProjectile())
+            {
+                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, _target);
+            }
+            else
+            {
+                _target.TakeDamage(currentWeapon.GetDamage());
+
+                /* Additional */
+                GetComponent<PopUpsController>().DamagePopUp(currentWeapon.GetDamage(), _target.transform);
+            }
         }
 
         // Animation Event.
         void Shoot()
         {
-            if (_target == null) return;
-            _target.TakeDamage(currentWeapon.GetDamage());
-
-            /* Additional */
-            GetComponent<PopUpsController>().DamagePopUp(currentWeapon.GetDamage(), _target.transform);
+            Hit();
         }
 
         // Animation Event.
