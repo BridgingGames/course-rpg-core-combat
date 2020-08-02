@@ -126,6 +126,18 @@ Transform:
   m_Father: {fileID: 2423329939616069517}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1570507724397466009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627272900472832250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faacc4ffc2183f94fa63ae414a6b83d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &871749868744861822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1031,18 +1043,6 @@ Transform:
   m_Father: {fileID: 2484878406556510528}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1570507724397466009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 627272900472832250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faacc4ffc2183f94fa63ae414a6b83d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6083166778519740145
 GameObject:
   m_ObjectHideFlags: 0
@@ -1847,6 +1847,12 @@ PrefabInstance:
       propertyPath: healthPoints
       value: 250
       objectReference: {fileID: 0}
+    - target: {fileID: 660479009193834314, guid: 9c561adf9456a20449e6b1bea989c040,
+        type: 3}
+      propertyPath: _damagePopUpText
+      value: 
+      objectReference: {fileID: 3860946976731177050, guid: a9676185ce435cb49baed06fc7639a97,
+        type: 3}
     - target: {fileID: 3999950789513899553, guid: 9c561adf9456a20449e6b1bea989c040,
         type: 3}
       propertyPath: m_LocalPosition.x

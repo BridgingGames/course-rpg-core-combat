@@ -21,8 +21,8 @@ namespace RPG.UI
         {
             if(_target != null)
             {
-                Vector2 screenPosition = Camera.main.WorldToScreenPoint(_target.position);
-                transform.position = new Vector3(screenPosition.x -16f, screenPosition.y + 50, 0);
+                Vector3 screenPosition = Camera.main.WorldToScreenPoint(_target.position);
+                transform.position = screenPosition;
             }
         }
 

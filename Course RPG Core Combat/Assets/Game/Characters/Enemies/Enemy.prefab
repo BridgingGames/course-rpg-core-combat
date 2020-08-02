@@ -1873,7 +1873,7 @@ PrefabInstance:
     - target: {fileID: -266025290020563059, guid: 9c561adf9456a20449e6b1bea989c040,
         type: 3}
       propertyPath: healthPoints
-      value: 30
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 1080652041, guid: 9c561adf9456a20449e6b1bea989c040, type: 3}
       propertyPath: m_Speed
@@ -1882,6 +1882,12 @@ PrefabInstance:
     - target: {fileID: 660479009193834314, guid: 9c561adf9456a20449e6b1bea989c040,
         type: 3}
       propertyPath: _playerDamagePopUpText
+      value: 
+      objectReference: {fileID: 3860946976731177050, guid: ccc4064a4e30da1489649683a2f0f183,
+        type: 3}
+    - target: {fileID: 660479009193834314, guid: 9c561adf9456a20449e6b1bea989c040,
+        type: 3}
+      propertyPath: _damagePopUpText
       value: 
       objectReference: {fileID: 3860946976731177050, guid: ccc4064a4e30da1489649683a2f0f183,
         type: 3}
