@@ -116,7 +116,7 @@ namespace RPG.Combat
                 _target.TakeDamage(currentWeapon.GetDamage());
 
                 /* Additional */
-                this.GetComponent<PopUpsController>().DamagePopUp(currentWeapon.GetDamage(), _target.transform);
+                _target.GetComponent<PopUpsController>().DamagePopUp(currentWeapon.GetDamage(), _target.transform);
             }
         }
 

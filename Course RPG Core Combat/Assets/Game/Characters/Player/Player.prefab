@@ -1851,7 +1851,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _damagePopUpText
       value: 
-      objectReference: {fileID: 3860946976731177050, guid: a9676185ce435cb49baed06fc7639a97,
+      objectReference: {fileID: 3860946976731177050, guid: ccc4064a4e30da1489649683a2f0f183,
         type: 3}
     - target: {fileID: 3999950789513899553, guid: 9c561adf9456a20449e6b1bea989c040,
         type: 3}

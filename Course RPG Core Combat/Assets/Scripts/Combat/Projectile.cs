@@ -8,6 +8,7 @@ namespace RPG.Combat
     {
         [SerializeField] float arrowSpeed = 2f;
         [SerializeField] bool isHoming = true;
+        [SerializeField] GameObject hitEffect = null;
         Health target = null;
         float damage = 0;
 
@@ -42,7 +43,6 @@ namespace RPG.Combat
                 return target.transform.position;
             }
 
-
             return target.transform.position + (Vector3.up * targetCapsule.height / 2);
         }
 
@@ -52,6 +52,11 @@ namespace RPG.Combat
             if (target.IsDead()) return;
 
             target.TakeDamage(damage);
+
+            if(hitEffect != null)
+            {
+                Instantiate(hitEffect, GetAimLocation(), transform.rotation); 
+            }
 
             /* Additional */
             target.GetComponent<PopUpsController>().DamagePopUp(damage, target.transform);

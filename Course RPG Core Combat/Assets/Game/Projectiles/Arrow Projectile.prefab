@@ -48,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowSpeed: 16
   isHoming: 1
+  hitEffect: {fileID: 6403861126150603333, guid: 95aa190b5947ddb4eaa3ebb8444f0fad,
+    type: 3}
 --- !u!136 &7174652190686908565
 CapsuleCollider:
   m_ObjectHideFlags: 0
