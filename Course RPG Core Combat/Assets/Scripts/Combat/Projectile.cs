@@ -1,4 +1,4 @@
-﻿using RPG.Core;
+﻿using RPG.Resources;
 using RPG.UI;
 using UnityEngine;
 
@@ -9,6 +9,9 @@ namespace RPG.Combat
         [SerializeField] float arrowSpeed = 2f;
         [SerializeField] bool isHoming = true;
         [SerializeField] GameObject hitEffect = null;
+        [SerializeField] float maxLifeTime = 5f;
+        [SerializeField] GameObject[] destroyOnHit = null;
+        [SerializeField] float lifeAfterImpact = 1f;
         Health target = null;
         float damage = 0;
 
@@ -33,6 +36,8 @@ namespace RPG.Combat
         {
             this.target = target;
             this.damage = damage;
+
+            Destroy(gameObject, maxLifeTime);
         }
 
         private Vector3 GetAimLocation()
@@ -53,6 +58,8 @@ namespace RPG.Combat
 
             target.TakeDamage(damage);
 
+            arrowSpeed = 0;
+
             if(hitEffect != null)
             {
                 Instantiate(hitEffect, GetAimLocation(), transform.rotation); 
@@ -61,7 +68,12 @@ namespace RPG.Combat
             /* Additional */
             target.GetComponent<PopUpsController>().DamagePopUp(damage, target.transform);
 
-            Destroy(gameObject);
+            foreach(GameObject toDestroy in destroyOnHit)
+            {
+                Destroy(toDestroy);
+            }
+
+            Destroy(gameObject, lifeAfterImpact);
         }
     }
 }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6069795147161595299}
   - component: {fileID: 1080652041}
   - component: {fileID: 1080652043}
+  - component: {fileID: 4435745786943359278}
   - component: {fileID: 4774262412611990229}
   - component: {fileID: -266025290020563059}
   - component: {fileID: -3222179139967948533}
@@ -151,6 +152,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4435745786943359278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6530175992961168347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e95980c2b768bd044b55b5e505877c2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingLevel: 1
+  characterClass: 0
+  progression: {fileID: 11400000, guid: 334d4ec5b30c9374cb94471abc8d2933, type: 2}
 --- !u!114 &4774262412611990229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,11 +179,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e989a61bf7c0079438460e0d31e12933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponRange: 1.5
   _timeBetweenAttacks: 1
-  _weaponDamage: 1
+  rightHandTransform: {fileID: 0}
+  leftHandTransform: {fileID: 0}
+  defaultWeapon: {fileID: 0}
   _target: {fileID: 0}
-  isInCombat: 0
 --- !u!114 &-266025290020563059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,5 +247,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3848c5130de44b243ab24ffd2a720477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerDamagePopUpText: {fileID: 3860946976731177050, guid: a9676185ce435cb49baed06fc7639a97,
-    type: 3}
+  _damagePopUpText: {fileID: 0}

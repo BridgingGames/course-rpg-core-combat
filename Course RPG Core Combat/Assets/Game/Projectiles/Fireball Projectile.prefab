@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8168472251954294610}
   - component: {fileID: 8047360902565937069}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: Fireball Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4862,6 +4862,10 @@ MonoBehaviour:
   isHoming: 1
   hitEffect: {fileID: 2302457091093092515, guid: 69d1b1037536b504884c93bb73d662db,
     type: 3}
+  maxLifeTime: 5
+  destroyOnHit:
+  - {fileID: 4046980667785563134}
+  lifeAfterImpact: 2
 --- !u!135 &8311262482518842711
 SphereCollider:
   m_ObjectHideFlags: 0
