@@ -46,6 +46,11 @@ namespace RPG.Combat
             _timeSinceLastAttack += Time.deltaTime;
         }
 
+        public Health GetTarget()
+        {
+            return _target;
+        }
+
         public void EquipWeapon(Weapon weapon)
         {
             currentWeapon = weapon;
@@ -109,11 +114,11 @@ namespace RPG.Combat
 
             if (currentWeapon.HasProjectile())
             {
-                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, _target);
+                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, _target, gameObject);
             }
             else
             {
-                _target.TakeDamage(currentWeapon.GetDamage());
+                _target.TakeDamage(gameObject, currentWeapon.GetDamage());
 
                 /* Additional */
                 _target.GetComponent<PopUpsController>().DamagePopUp(currentWeapon.GetDamage(), _target.transform);

@@ -603,6 +603,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.w
       value: 0.8660254
       objectReference: {fileID: 0}
+    - target: {fileID: 5602038073192326005, guid: 958da809c07317046829dc047aab3cd3,
+        type: 3}
+      propertyPath: m_Name
+      value: HUD
+      objectReference: {fileID: 0}
     - target: {fileID: 5602038073738773932, guid: 958da809c07317046829dc047aab3cd3,
         type: 3}
       propertyPath: m_LocalPosition.x
