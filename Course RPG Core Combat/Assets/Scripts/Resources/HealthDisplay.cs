@@ -14,7 +14,7 @@ namespace RPG.Resources
 
         private void Update()
         {
-            GetComponent<Text>().text = "Player Health [" + Mathf.Round(health.GetHealthPercentage() * 10) / 10 + "%]";
+            GetComponent<Text>().text = "Player Health [" + health.GetHealthMinMax()[0] + "/" + health.GetHealthMinMax()[1] + "] [" + Mathf.Round(health.GetHealthPercentage() * 10) / 10 + " %]";
         }
     }
 }

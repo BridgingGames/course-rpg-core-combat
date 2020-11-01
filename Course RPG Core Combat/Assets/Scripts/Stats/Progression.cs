@@ -34,7 +34,14 @@ namespace RPG.Stats
         {
             BuildLookUp();
 
-            return lookUpTable[characterClass][stat][level];
+            float[] levels = lookUpTable[characterClass][stat];
+
+            if(levels.Length < level)
+            {
+                return 0;
+            }
+
+            return levels[level - 1];
 
             //foreach (ProgressionCharacterClass progressionClass in characterClasses)
             //{
@@ -50,6 +57,14 @@ namespace RPG.Stats
             //    }
             //}
             //return 0;
+        }
+
+        public float GetLevels(Stat stat, CharacterClass characterClass)
+        {
+            BuildLookUp();
+
+            float[] levels = lookUpTable[characterClass][stat];
+            return levels.Length;
         }
 
         [System.Serializable]

@@ -6,6 +6,7 @@ using RPG.Resources;
 
 /* Additional */
 using RPG.UI;
+using RPG.Stats;
 
 namespace RPG.Combat
 {
@@ -112,16 +113,17 @@ namespace RPG.Combat
         {
             if (_target == null) return;
 
+            float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
             if (currentWeapon.HasProjectile())
             {
-                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, _target, gameObject);
+                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, _target, gameObject, damage);
             }
             else
             {
-                _target.TakeDamage(gameObject, currentWeapon.GetDamage());
+                _target.TakeDamage(gameObject, damage);
 
                 /* Additional */
-                _target.GetComponent<PopUpsController>().DamagePopUp(currentWeapon.GetDamage(), _target.transform);
+                _target.GetComponent<PopUpsController>().DamagePopUp(damage, _target.transform);
             }
         }
 

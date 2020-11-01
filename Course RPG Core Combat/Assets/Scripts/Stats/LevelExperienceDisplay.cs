@@ -1,8 +1,7 @@
-﻿using RPG.Stats;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace RPG.Resources
+namespace RPG.Stats
 {
     public class LevelExperienceDisplay : MonoBehaviour
     {

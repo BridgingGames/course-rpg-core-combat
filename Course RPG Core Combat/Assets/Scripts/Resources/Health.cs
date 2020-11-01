@@ -8,12 +8,17 @@ namespace RPG.Resources
 {
     public class Health : MonoBehaviour, ISaveable
     {
-        [SerializeField] private float healthPoints = 1f;
+        private float healthPoints = -1f;
         private bool isDead = false;
 
         private void Start()
         {
-            healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
+            GetComponent<BaseStats>().onLevelUp += RegenerateHealth;
+
+            if (healthPoints < 0)
+            {
+                healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
+            }
         }
 
         // Returns if the character is dead or not.
@@ -42,9 +47,22 @@ namespace RPG.Resources
             experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.ExperienceReward));
         }
 
+        public float[] GetHealthMinMax()
+        {
+            float[] health = new float[2];
+            health[0] = healthPoints;
+            health[1] = GetComponent<BaseStats>().GetStat(Stat.Health);
+            return health;
+        }
+
         public float GetHealthPercentage()
         {
             return (healthPoints / GetComponent<BaseStats>().GetStat(Stat.Health)) * 100;
+        }
+
+        private void RegenerateHealth()
+        {
+            healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
         }
 
         // If character is dead, don't kill It again, otherwise, flag It as dead;

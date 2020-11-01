@@ -20,7 +20,7 @@ namespace RPG.Combat
             }
             else
             {
-                GetComponent<Text>().text = "Enemy Health [" + Mathf.Round(fighter.GetTarget().GetHealthPercentage() * 10) / 10 + "%]";
+                GetComponent<Text>().text = "Player Health [" + fighter.GetTarget().GetHealthMinMax()[0] + "/" + fighter.GetTarget().GetHealthMinMax()[1] + "] [" + Mathf.Round(fighter.GetTarget().GetHealthPercentage() * 10) / 10 + " %]";
             }
         }
     }
